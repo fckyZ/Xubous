@@ -1,0 +1,57 @@
+Meu algoritmo seria balançar as caixar para sentir se elas estão vazias ou nao
+se estivesse vazia, pegaria a proxima até encontrar a chave.
+
+algoritmo :
+- pegue as caixas e abra elas
+se tiver uma caixa dentro, abra a caixa 
+até encontrar a chave
+
+usando a estrutura while
+/*
+def procure_pela_chave(caixa_principal):
+  pilha = main_box.crie_uma_pilha_para_busca()
+    while pilha is not vazia:
+      caixa = pilha.pegue_caixa()
+      for item in caixa:
+        if item.e_uma_caixa():
+          pilha.append(item)
+        elif item.e_uma_chave():
+          print "achei a chave!"
+*/
+
+usando recursividade
+/*
+  def procure_pela_chave(caixa):
+    for item in caixa:
+      if item.e_uma_caixa():
+        procure_pela_chave(item) 
+      elif item.e_uma_chave():
+        print "achei a chave!"
+*/
+
+
+caso-base e caso recursivo :
+
+Exemplo em atividades
+
+
+A pilha :
+
+chamada call stack 
+apenas duas ações - > push ( inserir ) / pop ( remover e ler )
+
+Exercícios :
+pilha
+
+|---------------|
+|    Sauda 2    |
+|---------------|
+| NOME : Maggie | 
+|---------------|
+|     Sauda     |
+|---------------|
+| NOME : Maggie | 
+|---------------|
+
+ela vai chamar a função sauda 2, depois excluila e depois char a função um e 
+excluila

@@ -1,0 +1,61 @@
+Notação Big O
+- uma notação especial pra julgar o quao rapido e um algoritmo.
+
+Melhor Maneira De Deixar Um Pedaço De Papel Com 16 Espaços
+_______________
+| 1  2  3  4  |
+| 5  6  7  8  |
+| 9  10 11 12 |
+| 13 14 15 16 |
+---------------
+
+Primeiro Algoritmo :
+Desenhar um por vez 
+O (16) = 16 ms
+
+Segundo Algoritmo :
+Dobrar o papel, de novo e de novo dobrando a quantidade de pedaços
+O (log 16) = 4 ms
+
+5 Classificações Mais Comuns
+• O (log n), também conhecido como tempo logarítmico. Exemplo: pesquisa binária.
+• O (n), conhecido como tempo linear. Exemplo: pesquisa simples.
+• O (n * log n). Exemplo: um algoritmo rápido de ordenação, como a
+ordenação quicksort (explicada no Capítulo 4).
+• O (n²). Exemplo: um algoritmo lento de ordenação, como a ordenação por
+seleção (explicada no Capítulo 2).
+• O (n!). Exemplo: um algoritmo bastante lento, como o do caixeiro-viajante
+(explicado a seguir!).
+
+Principais Pontos :
+• A rapidez de um algoritmo não é medida em segundos, mas pelo
+crescimento do número de operações.
+• Em vez disso, discutimos sobre o quão rapidamente o tempo de execução
+de um algoritmo aumenta conforme o número de elementos aumenta.
+• O tempo de execução em algoritmos é expresso na notação Big O.
+• O(log n) é mais rápido do que O(n), e O(log n) ca ainda mais rápido
+conforme a lista aumenta.
+
+EXERCÍCIOS :
+1.3 ) Recebe um nome, retorna o numero de telefone que esta em uma agenda.
+O (log n)
+
+1.4 ) Recebe um numero de telefone e retorna o nome dele.
+O (n)
+
+1.5 ) Ler o numero de cada pessoa
+O (n)
+
+1.6 ) LEr os numeros apenas de nomes que começam com A
+O (log n)
+
+## Problema Com um Algoritmo Terrível
+O caixeiro-viajante ->
+----------------------
+- Pede-se :
+ • Ele precisa ir em 5 cidades
+
+ - Tem-se :
+  • Precisa passar por todas as cidades percorrendo uma ditancia minima
+
+  O (n!)

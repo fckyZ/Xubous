@@ -1,0 +1,42 @@
+Ordenação por seleção
+- Arrays, listas encadeadas
+Estudar os pros e contras de cada uma dessas estruturas
+
+Como funciona a memoria ?
+Similar a um gavetas, onde cada uma tem uma capacidade e endereço
+
+Arrays e listas encadeadas :
+Array - Armazenadas uma ao lado da outra
+Listas encadeadas - Armazena em qualquer lugar da memoria
+
+Terminologia :
+
+|10 20 30 40 50|
+  0  1  2  3  4
+
+Ex correto = "O número 20 está no índice 1"
+
+Exercícios :
+2.1 ) App pra acompanhar finanças, todo dia anotará tudo que gastou e onde gastou
+resivar os gastos e resumir o quanto gastou.
+Um array
+
+Qual o mais usado ?
+Depende do caso, porem arrays sao mais comuns devido ao seu acesso.
+Existem dois tipos de acesso, o aleatorio e o sequencial
+
+Exercícios :
+2.2 ) Anotar pedidos de um restaurante
+Lista encadeadas
+
+2.3 ) Lista de usuário 
+Busca binaria - ordenada
+Array
+
+2.4 ) A quantidade é pre definida. Ele é posicionado logo apois o ultimo cadastrado
+
+2.5 ) A lista seria mais rapida, porem menos eficiente se a lista for ordenada em ordem alfabética
+O (26)
+O (1)
+
+
