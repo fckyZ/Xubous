@@ -1,1 +1,8 @@
-Pag 89
+Pratica Dividir Para Conquistar ( DC )
+
+QuickSort algoritmo de ordenação rápido, exemplo de programação elegante
+
+Algoritmo De Euclides :
+“Caso você encontre o maior quadrado que divide este segmento, ele será o maior quadrado
+que irá dividir toda a fazenda.”
+
