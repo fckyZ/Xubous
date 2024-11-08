@@ -6,3 +6,40 @@ Algoritmo De Euclides :
 “Caso você encontre o maior quadrado que divide este segmento, ele será o maior quadrado
 que irá dividir toda a fazenda.”
 
+QuickSort :
+Ex :
+Caso o array tenha tamanho < 2, pode retornar ele mesmo
+
+def quickSort ( arr ):
+    if len ( arr ) < 2:
+        return arr
+
+1. Escolha um pivô.
+2. Particione o array em dois subarrays, separando-os entre elementos
+menores do que o pivô e elementos maiores do que o pivô.
+3. Execute o quicksort recursivamente em ambos os subarrays.
+
+quicksort ( [ 15, 10 ] ) + [ 33 ] + quicksort ( [] )
+> [ 10, 15, 33 ] 
+
+Notação Big O
+
+- Merge Sort
+
+Merge Sort versus QuickSort :
+O quicksort tem uma constante menor
+do que o merge sort. Assim, como ambos têm tempo de execução O ( n log n ),
+o quicksort acaba sendo mais rápido.
+
+Além disso, o quicksort é maisrápido, na prática, pois ele funciona mais vezes no 
+caso médio do que no pior caso.
+O tempo de execução médio do quicksort é O (n log n)
+
+Exercícios :
+4.5 ) O ( n )
+4.6 ) O ( n )
+4.7 ) O ( 1 )
+4.8 ) o ( n² )
+
+A estratégia DC funciona por meio da divisão do problema em problemas
+menores.
