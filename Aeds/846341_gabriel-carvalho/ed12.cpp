@@ -251,10 +251,10 @@ void met05 ( Metodos & metodos )
     fprintf ( arquivo, "Nome: %s\n", metodos.getName ().c_str () ); 
     fprintf ( arquivo, "Telefone: %d", metodos.getTelephone () ); 
     
-    // Volta para o início do arquivo para ler os dados
+    // volta para o início do arquivo para ler os dados
     rewind ( arquivo );
     
-    // Lê e imprime o conteúdo do arquivo
+    // le e imprime o conteúdo do arquivo
     metodos.readFile ( arquivo );
     
     fclose ( arquivo );
