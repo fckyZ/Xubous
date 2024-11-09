@@ -126,7 +126,7 @@ int calcularDeterminante ( int * matriz, int numberColumns, int numberLines )
 }
 
 // metodo para retornar a determinante
-int matrizDeterminante ( int * mat, int numberColumns, int numberLines )
+int determinarMatrizDeterminante ( int * mat, int numberColumns, int numberLines )
 {
     printf("%s\n", "Matriz Original: ");
     printarMatriz (mat, numberColumns, numberLines);
@@ -142,21 +142,19 @@ int main ()
     int numberColumns = readSize ( "Digite a Quantidade de Colunas do Array:" );
     int numberLines = readSize ( "Digite a Quantidade de Linhas Do Array:" );
 
-    while ( numberColumns != numberLines )
-    {
-        if ( numberColumns != numberLines )
+        while ( numberColumns != numberLines )
         {
             printf ( "%s\n", "Quantidades de Linhas e Colunas Diferentes !!!");
             numberColumns = readSize ( "Digite a Quantidade de Colunas do Array:" );
             numberLines = readSize ( "Digite a Quantidade de Linhas Do Array:" );
         }
-    }
+
     
     int * mat = ( int * ) malloc ( numberLines * numberColumns * sizeof ( int ) );
 
     preencherMatriz ( mat , numberColumns, numberLines );
 
-    int determinante = matrizDeterminante ( mat , numberColumns, numberLines );
+    int determinante = determinarMatrizDeterminante ( mat , numberColumns, numberLines );
     printf ( "Determinante: %d\n", determinante);
 
     free ( mat );
