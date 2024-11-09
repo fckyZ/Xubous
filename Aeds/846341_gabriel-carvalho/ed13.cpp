@@ -17,6 +17,7 @@ class Metodos
     private:
         std :: string name;
         int telephone;
+        int secondTelephone;
         
         bool telephoneIsValid ( int telephone )
         {
@@ -33,13 +34,16 @@ class Metodos
 
     public:
         Metodos ();                                 // construtor padrão
-        ~ Metodos ();                               // destrutor padrão
+        ~ Metodos ();                               // destrutor padrão                          
 
         std :: string getName () ;                  // getter para pegar o nome
         int getTelephone () ;                       // getter para pegar o telefone
+        int getSecondTelephone () ;                 // getter para pegar o telefone 2
 
 
         void setTelephone ();                       // metodo para definir o telefone
+        void setSecondTelephone ();                 // metodo para definir o telefone 2
+        void setNewSecondTelephone ();              // metodo para definir um novo valor
         void setName ();                            // metodo para definir o nome 
         int validateTelephone ();                   // metodo para chamar a função privada
         void resetObject ();                        // metodo para resetar os valores
@@ -54,6 +58,7 @@ class Metodos
 Metodos :: Metodos () // Construtor Padrão
 {
     telephone = 0;
+    secondTelephone = 0;
     name = "";
     std :: cout << "Objeto Padrao Criado" << std :: endl;
 }
@@ -61,6 +66,7 @@ Metodos :: Metodos () // Construtor Padrão
 Metodos :: ~ Metodos () // Destrutor Padrão
 {
     telephone = 0;
+    secondTelephone = 0;
     name = "";
     std :: cout << "Dados Resetados" << std :: endl;
 }
@@ -118,18 +124,26 @@ std :: string Metodos :: getName ()
 }
 // Fim Getter Nome
 
+// Getter Telefone Secundario
+int Metodos :: getSecondTelephone ()
+{
+    return secondTelephone;
+}
+// Fim Getter Telefone Secundario
+
 // Getter Telefone
 int Metodos :: getTelephone ()
 {
     return telephone;
 }
-// Fim Getter Telefone 
+// Fim Getter Telefone
 
 // Metodo Reset Valores Do Objeto
 void Metodos :: resetObject ()
 {
-    this -> ~ Metodos ();
-    new ( this ) Metodos ();
+    this->telephone = 0;
+    this->secondTelephone = 0;
+    this->name = "";
     std :: cout << "Objeto Resetado Com Sucesso!" << std :: endl;
     std :: cin.ignore ();
     std :: cin.get ();
@@ -249,8 +263,9 @@ void met05 ( Metodos & metodos )
     
     // gravando no arquivo temporário
     fprintf ( arquivo, "Nome: %s\n", metodos.getName ().c_str () ); 
-    fprintf ( arquivo, "Telefone: %d", metodos.getTelephone () ); 
-    
+    fprintf ( arquivo, "Telefone: %d\n", metodos.getTelephone () ); 
+    fprintf ( arquivo, "Telefone Secundario: %d", metodos.getSecondTelephone () ); 
+
     // volta para o início do arquivo para ler os dados
     rewind ( arquivo );
     
@@ -262,8 +277,87 @@ void met05 ( Metodos & metodos )
     std::cin.get ();
 }
 // Fim Metodo 05
+
+// Metodo 06
+void met06 ()
+{
+    std :: cout << "Construtores Ja Recebem Um Segundo Telefone!!!" << std :: endl;
+    std :: cin.ignore ();
+    std :: cin.get ();
+}
+// Fim Metodo 06
+
+// Metodo 07
+void met07 ( Metodos & metodos )
+{
+    std :: cout << "Metodo 07" << std :: endl;
+
+    if ( metodos.getTelephone () == 0 && metodos.getSecondTelephone () == 0 )
+    {
+        printf ( "%s", "Nenhum Telefone!\n" );
+    } else if (  metodos.getTelephone () == 0 || metodos.getSecondTelephone () == 0 )
+        {
+            printf ( "%s", "Um Telefone!\n" );
+        } else
+            {
+                printf ( "%s", "Dois Telefones!\n" );
+            }
+
+    std :: cin.ignore ();
+    std :: cin.get ();
+}
+// Fim Metodo 07
+
+// Metodo 08 Auxiliar
+void Metodos :: setSecondTelephone ()
+{
+    int secondTelephone_;
+    std :: cout << "Digite o Segundo Telefone: " << std :: endl;
+    std :: cin >> secondTelephone_;
+    this -> secondTelephone = secondTelephone_; 
+}
+// Fim Metodo 08 Auxiliar
+
+// Metodo 08
+void met08 ( Metodos & metodos )
+{
+    std :: cout << "Metodo 08" << std :: endl;
+    metodos.setSecondTelephone ();
+    std :: cout << "Telefone Armazenado: " << metodos.getSecondTelephone () << std :: endl;
+    std :: cin.ignore ();
+    std :: cin.get ();
+}
+// Fim Metodo 08
+
+// Metodo 09 Auxiliar   
+void Metodos :: setNewSecondTelephone ()
+{
+    int newSecondTelephone_;
+    std :: cout << "Digite o Novo Segundo Telefone: " << std :: endl;
+    std :: cin >> newSecondTelephone_;
+    this -> secondTelephone = newSecondTelephone_; 
+}
+// Fim Metodo 08 Auxiliar
+
+// Metodo 09
+void met09 ( Metodos & metodos )
+{
+    std :: cout << "Metodo 09" << std :: endl;
+    metodos.setSecondTelephone ();
+    std :: cout << "Novo Telefone Armazenado: " << metodos.getSecondTelephone () << std :: endl;
+    std :: cin.ignore ();
+    std :: cin.get ();
+}
 /* Fim Metodos */
 
+// Metodo 10
+void met10 ( Metodos & metodos )
+{
+    std :: cout << "Telefone Deletado!" << std :: endl;
+    metodos.setTelephone ();
+    metodos.setSecondTelephone ();
+}
+// Fim Metodo 10
 
 /* Função Principal */
 
@@ -296,6 +390,11 @@ int main ()
             case 3: { met03 ( metodos ); break; }
             case 4: { met04 ( metodos ); break; }
             case 5: { met05 ( metodos ); break; }
+            case 6: { met06 (); break; }
+            case 7: { met07 ( metodos ); break; }
+            case 8: { met08 ( metodos ); break; }
+            case 9: { met09 ( metodos ); break; }
+            case 10: { met10 ( metodos ); break; }
             case 11: { metodos.resetObject (); break; }
             default: { std :: cout << "Opcao invalida." << std :: endl; break; }
         }
@@ -305,10 +404,3 @@ int main ()
 }
 
 /* Fim Função Principal */
-
-
-/*
-------------------------- Testes -------------------------
-1 )
-
-*/
