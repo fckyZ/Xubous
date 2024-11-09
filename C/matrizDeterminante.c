@@ -54,7 +54,7 @@ void printarMatriz ( int * mat, int numberColumns, int numberLines )
     printf ( "\n" );
 }
 
-// funcao auxiliar Laplaca
+// funcao auxiliar Laplaca - det = ( a x d ) - ( b x c )
 int determinante2x2 (int * mat)
 {
     return mat [ 0 ] * mat [ 3 ] - mat [ 1 ] * mat [ 2 ];
@@ -86,7 +86,9 @@ void printarMatrizExpandida ( int* mat, int numberColumns, int numberLines )
 // metodo calcular determinante
 int calcularDeterminante ( int * matriz, int numberColumns, int numberLines )
 {
-     if ( numberColumns == 1 && numberLines == 1 )
+    int determinante = 0;
+
+    if ( numberColumns == 1 && numberLines == 1 )
     {
         return matriz [ 0 ];
     }
@@ -95,8 +97,6 @@ int calcularDeterminante ( int * matriz, int numberColumns, int numberLines )
     {
         return determinante2x2 ( matriz );
     }
-
-    int determinante = 0;
     
     // loop sobre as colunas para realizar a expansão de Laplace
     for ( int i = 0; i < numberColumns; i++ )
@@ -116,8 +116,6 @@ int calcularDeterminante ( int * matriz, int numberColumns, int numberLines )
             }
         }
 
-       
-
         // Alternando os sinais para a expansão de Laplace
         int coeficiente = ( i % 2 == 0 ) ? 1 : -1;
         determinante += coeficiente * matriz [ i ] * calcularDeterminante ( newMatriz, numberColumns - 1, numberLines - 1 );
@@ -132,12 +130,9 @@ int matrizDeterminante ( int * mat, int numberColumns, int numberLines )
 {
     printf("%s\n", "Matriz Original: ");
     printarMatriz (mat, numberColumns, numberLines);
-
     printarMatrizExpandida (mat, numberColumns, numberLines);
     
-
     return calcularDeterminante ( mat, numberColumns, numberLines );
-
 }
 /* Fim Métodos */
 
@@ -146,6 +141,17 @@ int main ()
 {
     int numberColumns = readSize ( "Digite a Quantidade de Colunas do Array:" );
     int numberLines = readSize ( "Digite a Quantidade de Linhas Do Array:" );
+
+    while ( numberColumns != numberLines )
+    {
+        if ( numberColumns != numberLines )
+        {
+            printf ( "%s\n", "Quantidades de Linhas e Colunas Diferentes !!!");
+            numberColumns = readSize ( "Digite a Quantidade de Colunas do Array:" );
+            numberLines = readSize ( "Digite a Quantidade de Linhas Do Array:" );
+        }
+    }
+    
     int * mat = ( int * ) malloc ( numberLines * numberColumns * sizeof ( int ) );
 
     preencherMatriz ( mat , numberColumns, numberLines );
