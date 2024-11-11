@@ -1,1 +1,38 @@
-Pág 118 - Tabela Hash
+Tabela Hash :
+Exemplo contextual - Um caixa de mercado precisando conferir o preço do produto em um caderno
+Lista Ordenada O ( log n ) | Lista Nao Ordenada O ( n )
+Ovos -> 2,38               | Pera -> 0,89 
+Leite -> 1,99              | Ovos -> 2,38
+Pera -> 0,89               | Leite -> 1,99
+
+Seria possivel implementar essa dupla de itens em um array como por exemplo :
+( ovos, 2.38 )
+
+Função Hash -> insere uma string, retorna um numero
+"Mapeia strings e numeros"
+
+Requisitos :
+- Ela deve ser consistente
+- Mapear diferentes palavras e diferentes numeros
+- O ( 1 )
+
+Exemplo Codigo :
+caderno = dict ()
+caderno [ "maçã" ] = 0.68
+caderno [ "leite" ] = 1.58
+caderno [ "abacate" ] = 2.45
+
+print ( caderno [ "abacate" ] )
+
+possui chaves e valores -> 
+nomes dos produtos sao chaves e os preços os valores
+
+caching :
+exemplo do facebook, os dados aparecidos para o usuario
+dependem do conteudo que ele assiste 
+caso nao esteja logado, o servidor mostra uma pagina padrao
+
+utilidades :
+- filtrar itens
+- relacionar dois itens
+- caching / memorização de dados
