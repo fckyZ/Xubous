@@ -4,6 +4,7 @@
 /* Biblioteca Auxiliar */
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 /* Fim Biblioteca Auxiliar */
 
 
@@ -13,6 +14,17 @@ int readSize ( char * texto )
     int size = 0;
     printf ( "%s\n", texto );
     scanf ( "%d", & size );
+
+    if ( size <= 0 )
+    {   
+        printf ( "%s\n", "Digite Um Tamanho Positivo!" );
+        while ( size <= 0 )
+        {
+            scanf ( "%d", & size );
+        }
+        
+    }
+
     return size;
 }
 
@@ -25,10 +37,13 @@ void trocarValores ( int * arr, int a, int b )
 
 int particionarArray ( int * arr, int inicio, int final )
 {
-    int pivo = arr [ final ];
+    int meio = inicio + ( final - inicio ) / 2;
+    int pivo = arr [ meio ];
     int i = inicio - 1;
 
-    for ( int j = 0; j < final; j++ )
+    trocarValores ( arr, meio, final );
+
+    for ( int j = inicio; j < final; j++ )
     {
         if ( arr [ j ] <= pivo )
         {
@@ -36,29 +51,31 @@ int particionarArray ( int * arr, int inicio, int final )
             trocarValores ( arr, i, j );
         }
     }
-    trocarValores ( arr, arr [ i + 1 ], pivo );
 
-    return i + 1;
+    trocarValores ( arr, i + 1, final );
+
+    return i + 1; // retornando porque o final passou do inicio
 }
 
 void quickSort ( int * arr, int inicio, int final )
 {
-    if ( inicio < final )
+     if ( inicio >= final ) // caso base 
     {
         return;
     }
-    int pivo = particionarArray ( arr, inicio, final );
-    quickSort ( arr, inicio, pivo - 1 );
-    quickSort ( arr, pivo + 1, final );
+
+    int indicePosicao = particionarArray ( arr, inicio , final ); // retorna o indice do meio
+    quickSort ( arr, inicio, indicePosicao - 1 ); // estuda do inicio ate a metade
+    quickSort ( arr, indicePosicao + 1, final ); // estuda da metade ate o final;
 }
 
-void diferencaMaiorMenor ( int * arr, int size )
+int diferencaMaiorMenor ( int * arr, int size )
 {
     int diferencaMaiorMenor = arr [ size - 1 ] - arr [ 0 ];
-    printf ( "%d\n", diferencaMaiorMenor );
+    return diferencaMaiorMenor;
 } 
 
-void mediaTemperatura ( int * arr, int size )
+int mediaTemperatura ( int * arr, int size )
 {
     int soma = 0;
     int media = 0;
@@ -66,21 +83,55 @@ void mediaTemperatura ( int * arr, int size )
     {
         soma += arr [ i ];
     }
-    media = soma / 12;
+    media = soma / size;
 
-    printf ( "%d\n", media );
+    return media;
 }
 
-void maisRepete(int *arr, int size)
-{
+int maisRepete ( int * arr, int size )
+{   
+    int maiorValorRepetente = arr [ 0 ];
+    int frequencia = 1;
+    int count = 1;
+
+    for ( int i = 1; i < size; i++ )
+    {
+        if ( arr [ i ] == arr [ i - 1 ] )
+        {
+            count ++;
+        } else
+            {
+                if ( count > frequencia )
+                {
+                    frequencia = count;
+                    maiorValorRepetente = arr [ i - 1 ];
+                }
+                count = 1;
+            }
+    }
     
+    if ( count > frequencia )
+    {
+        frequencia = count;
+        maiorValorRepetente = arr [ size - 1 ];
+    }
+
+    return maiorValorRepetente;
+}
+
+void printarArray ( int * arr, int size )
+{
+    for ( int i = 0; i < size; i++ )
+    {
+        printf ( "%d ", arr [ i ] );
+    }
 }
 
 void preencherArray ( int * arr, int size )
 {
     for ( int i = 0; i < size; i++ )
     {
-        arr [ i ] = i * 2;
+        arr [ i ] =  rand () % 11 ;
     }
 }
 /* Fim Métodos E Funções */
@@ -89,14 +140,26 @@ void preencherArray ( int * arr, int size )
 /* Função Principal */
 int main ()
 {
+    srand ( time ( NULL ) );
     int size = readSize ( "Digite O Tamanho Do Array:" );
-    int array [ size ];
+    int * array = ( int * ) malloc ( size * sizeof ( int ) ); 
 
-    quickSort ( array, 0, size );
-    diferencaMaiorMenor ( array, size );
-    mediaTemperatura ( array, size );
-    maisRepete ( array, size );
+    preencherArray ( array , size );
+    printf ( "%s\n", "Array Ordenado:" );
+    quickSort ( array, 0, size - 1 );
+    printarArray ( array, size );
+    printf ( "\n" );
     
+    int diferencaMaiorMenorArray = diferencaMaiorMenor ( array, size );
+    int mediaTemperaturaArray = mediaTemperatura ( array, size );
+    int valorMaisRepeteArray = maisRepete ( array, size );
+    
+    printf("Diferenca Maior-Menor: %d\n", diferencaMaiorMenorArray);
+    printf("Media das Temperaturas: %d\n", mediaTemperaturaArray);
+    printf("Temperatura mais frequente: %d\n", valorMaisRepeteArray);
+
+    free ( array );
+    return 0;    
 }
 /* Fim Função Principal */
 
