@@ -18,7 +18,7 @@ char * longestCommonPrefix ( char * * strs, int strsSize )
     return p;
 }
 
-int main ()
+int main ( )
 {
     //
     return 0;
