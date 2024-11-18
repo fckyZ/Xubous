@@ -4,16 +4,16 @@
 
 char * longestCommonPrefix ( char * * strs, int strsSize )
 {
-    char * p = strs [ 0 ];
+    char * p = strs [ 0 ]; // pega a primeira palavra da lista
     
-    for ( int i = 1; i < strsSize; i++ )
+    for ( int i = 1; i < strsSize; i++ ) // percorrer todas as palavras
     {
-        int j = 0;
-        while ( p [ j ] != '\0' && strs [ i ] [ j ] != '\0' && p [ j ] == strs [ i ] [ j ] )
+        int j = 0; // auxiliar para caracteres
+        while ( p [ j ] != '\0' && strs [ i ] [ j ] != '\0' && p [ j ] == strs [ i ] [ j ] ) // enquanto as primeira e proxima palavra != final
         {
-            j++;
+            j++; // proximo caracter
         }
-        p[j] = '\0';
+        p[j] = '\0'; // particiona a palavra até a parte comum
     }
     return p;
 }
