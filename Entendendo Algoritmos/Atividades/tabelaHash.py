@@ -3,7 +3,7 @@ caderno [ "maçã" ] = 0.68
 caderno [ "leite" ] = 1.58
 caderno [ "abacate" ] = 2.45
 
-print ( caderno [ "abacate" ] )
+print ( caderno [ "abacate" ] )  
 
 
 listaTelefonica = dict ()
