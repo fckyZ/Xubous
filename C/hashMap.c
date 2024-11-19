@@ -4,10 +4,22 @@
 /* Bibliotecas Auxiliares */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /* Fim Bibliotecas Auxiliares */
 
 
 /* Definições De Struct */
+typedef
+struct s_hash_Map
+{
+    char * key;
+    int value;
+    struct hashMap * next;
+} Map;
+
+typedef
+Map *
+ref_Map;
 /* Fim Definições De Struct */
 
 

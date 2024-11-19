@@ -84,25 +84,45 @@ void int_Cell_print ( ref_int_Cell this )
     printf ( "\n" ); // quebra de linha 
 } // Fim Método Para Printar 
 
+// Método Para Conectar Células
+ref_int_Cell int_Cell_connect ( ref_int_Cell this, ref_int_Cell next )
+{
+    if ( this != null )
+    {
+        this -> link = next;
+    }
+
+    return this;
+}
+// Fim Método Para Conectar Células
+
 // Método Para Testar
 void int_Cell_test ( )
 {   
     // definir dados
     ref_int_Cell a = null;
+    ref_int_Cell b = null;
     // identificar
     printf ( "\nTest int_Cell library (C)\n" );
     // criar armazenador
-    a = int_new_Cell(); // usar a função correta
+    a = int_new_Cell ( ); // usar a função correta
+    b = int_new_Cell ( );
     // mostrar dado
     printf ( "\n01. Testar criacao e armazenamento\n" );
     int_Cell_print ( a );
     // alterar dado
     a = int_Cell_set ( a, 10 ); // passar ponteiro para a função
+    b = int_Cell_set ( b, 20 );
     // mostrar dado
     printf ( "\n02. Testar alteracao e recuperacao\n" );
     printf ( "%d\n", int_Cell_get ( a ) );
     printf ( "\n" );
+    printf ( "\n03. Testar conexao de celula\n" );
+    a = int_Cell_connect ( a, b );
+    int_Cell_print ( a );
+    printf ( "\n" );
 } // Fim Método Para Testar
+
 /* Fim Métodos E Funções */
 
 
